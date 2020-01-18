@@ -73,6 +73,28 @@ var vm = new Vue({
         console.error(error);
       }
     },
+    async getRestrants(id) {
+      try {
+        const response = await axios({
+          method: "POST",
+          url: 'http://localhost:1337/graphql',
+          data: {
+            query: `
+              query {
+                restaurants {
+                  id
+                  name
+                  description
+                }
+              }
+            `
+          }
+        });
+        // console.log(response.data.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async getTodos() {
       try {
         const response = await axios({
